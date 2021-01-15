@@ -19,7 +19,8 @@
       activeLink.classList.remove('active');
     }
     
-    /* add class 'active' to the clicked link */
+    /* [DONE] add class 'active' to the clicked link */
+    event.preventDefault();
     const clickedElement = this;
     console.log('clickedElement:', clickedElement);
     console.log('clickedElement (with plus):' + clickedElement);
@@ -33,10 +34,17 @@
     }
   
     /* get 'href' attribute from the clicked link */
+    const articleSelector = clickedElement.getAttribute('href');
+    console.log('articleSelector:', articleSelector);
   
     /* find the correct article using the selector (value of 'href' attribute) */
+    const targettArticle = document.querySelector(articleSelector);
+    console.log('targetArticle:', targettArticle);
   
     /* add class 'active' to the correct article */
+    //const correctArtClass = correctArticle.classList
+    //console.log('correctArticle classList:', correctArtClass);
+    //correctArticle.classList.add('active');
   }
   
   const links = document.querySelectorAll('.titles a');

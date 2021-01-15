@@ -49,17 +49,22 @@
     
     /* for each article: */
     const articles = document.querySelectorAll(optArticleSelector);
-    console.log ('articles', articles);
+    console.log ('articles: ', articles);
 
     for(let article of articles){
         
         /* find article id */
         const articleId = article.getAttribute('id');
-        console.log ('article', article);
-        console.log ('id', articleId);
-        
+        console.log ('article: ', article);
+        console.log ('id: ', articleId);
+                        
         /* find article title */
-        
+        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+        console.log ('articleTitle: ', articleTitle);
+
+        const articleTitle1 = document.querySelector(optTitleSelector).innerHTML;
+        console.log ('articleTitle1: ', articleTitle1);
+
         
         /* generate HTML with title and id */
         

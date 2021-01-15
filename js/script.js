@@ -48,8 +48,15 @@
     titleList.innerHTML = '';
     
     /* for each article: */
-        /* find article id */
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log ('articles', articles);
+
+    for(let article of articles){
         
+        /* find article id */
+        const articleId = article.getAttribute('id');
+        console.log ('article', article);
+        console.log ('id', articleId);
         
         /* find article title */
         
@@ -58,8 +65,8 @@
         
         
         /* insert HTML into link list */
-
-
+    
+    }
   }
   
   generateTitleLinks ();
@@ -69,11 +76,11 @@
     link.addEventListener('click', titleClickHandler);
   }
 
-  const tags = document.querySelectorAll('.tags a');
+  /*const tags = document.querySelectorAll('.tags a');
   for(let tag of tags){
     console.log('tags:', tags);
     console.log('tag:', tag);
     tag.addEventListener('click', generateTitleLinks);
-  }
+  }*/
 
 }

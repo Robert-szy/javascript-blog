@@ -41,7 +41,6 @@
   optTitleListSelector = '.titles';
 
   function generateTitleLinks(){
-    console.log('event:');
     
     /* remove links from left panel*/
     const titleList = document.querySelector(optTitleListSelector)
@@ -64,12 +63,17 @@
 
         const articleTitle1 = document.querySelector(optTitleSelector).innerHTML;
         console.log ('articleTitle1: ', articleTitle1);
-
         
         /* generate HTML with title and id */
-        
-        
+        const linkHTML = '<li><a href="#'+ articleId +'"><span>'+ articleTitle +'</span></a></li>';
+        console.log ('linkHTML: ', linkHTML);
+
         /* insert HTML into link list */
+        //titleList.innerHTML = titleList.innerHTML + linkHTML;
+
+        //element.insertAdjacentHTML(position, text);
+
+        titleList.insertAdjacentHTML ("beforeend", linkHTML);
     
     }
   }

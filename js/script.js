@@ -33,24 +33,38 @@ const titleClickHandler = function(event){
     /* [DONE] add class 'active' to the correct article */
     targetArticle.classList.add('active');
 
-    /* find correct article height*/
-
-    const childHeight = targetArticle.offsetHeight + 'px';
+    /* [DONE] find article and sidebars height*/
+    let childHeight = targetArticle.offsetHeight + 40;
+    let sidebarHeight = sidebarStartHeight;
     console.log('targetArticle:', targetArticle);
     console.log('childHeight:', childHeight);
+    console.log('sidebarHeight:', sidebarHeight);
+    console.log('sidebarStartHeight:', sidebarStartHeight);
 
-    /* set wrapper height for selected article*/
-    const wrapperHeight = document.querySelector('.wrapper');
+
+    /* [DONE] set wrapper height for selected article*/
+    const wrapperHeight = document.querySelector('.posts');
     console.log('wrapperHeight:', wrapperHeight);
-
-    wrapperHeight.style.height = childHeight;
-
-
+    if (childHeight>sidebarStartHeight) {
+        childHeight = childHeight + 'px';
+        wrapperHeight.style.height = childHeight;
+    } else {
+        sidebarHeight = sidebarHeight +'px';
+        wrapperHeight.style.height = sidebarHeight;
+    }
 }
 
 const optArticleSelector = '.post',
 optTitleSelector = '.post-title',
 optTitleListSelector = '.titles';
+
+/* [DONE] set initial .post height*/
+const sidebarStartHeight = document.querySelector('.sidebar').offsetHeight;
+const childStartHeight = document.querySelector('.post').offsetHeight;
+if (childStartHeight>sidebarStartHeight) {
+    let childHeight = childStartHeight + 40 + 'px';
+    document.querySelector('.posts').style.height = childHeight;
+}
 
 function generateTitleLinks(){
     /* [DONE] remove links from left panel*/

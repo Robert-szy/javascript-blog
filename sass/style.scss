@@ -64,6 +64,8 @@ body {
 .posts {
   flex: 2 0 0;
   position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar, .posts {
@@ -117,14 +119,9 @@ body {
 .post {
   //display: none;
   position: absolute;
+  flex: 1;
   margin: 0 auto;
   padding: 0px 40px 40px 0px;
-  //top: 55%;
-  //left: 55%;
-  //width: 500px;
-  // height: 500px;
-  // margin-top: -250px; /* Half the height */
-  // margin-left: -250px;
   opacity: 0;
   &.active {
     //display: block;

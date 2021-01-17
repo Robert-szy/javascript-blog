@@ -111,14 +111,4 @@ function generateTitleLinks(){
   
 generateTitleLinks ();
 
-
-
-
-/*const tags = document.querySelectorAll('.tags a');
-for(let tag of tags){
-    console.log('tags:', tags);
-    console.log('tag:', tag);
-    tag.addEventListener('click', generateTitleLinks);
-}*/
-
 }

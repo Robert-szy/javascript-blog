@@ -32,6 +32,20 @@ const titleClickHandler = function(event){
   
     /* [DONE] add class 'active' to the correct article */
     targetArticle.classList.add('active');
+
+    /* find correct article height*/
+
+    const childHeight = targetArticle.offsetHeight + 'px';
+    console.log('targetArticle:', targetArticle);
+    console.log('childHeight:', childHeight);
+
+    /* set wrapper height for selected article*/
+    const wrapperHeight = document.querySelector('.wrapper');
+    console.log('wrapperHeight:', wrapperHeight);
+
+    wrapperHeight.style.height = childHeight;
+
+
 }
 
 const optArticleSelector = '.post',

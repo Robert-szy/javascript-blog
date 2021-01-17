@@ -47,7 +47,6 @@ body {
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  height: 1500px;
 }
 
 .sidebar {

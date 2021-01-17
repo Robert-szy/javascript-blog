@@ -24,6 +24,12 @@ body {
   line-height: 1.7;
 }
 
+.blog {
+    background-image: url(/images/background.png);
+    background-position: center, center;
+    background-size: cover;
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -46,6 +52,9 @@ body {
 .wrapper {
   display: flex;
   margin-left: 10px;
+  padding-bottom: 300px;
+  min-height: fit-content;
+  height: 1500px;
 }
 
 .sidebar {
@@ -54,14 +63,16 @@ body {
 
 .posts {
   flex: 2 0 0;
+  position: relative;
 }
 
 .sidebar, .posts {
   background: $color-light;
-  margin-right: 10px;
+  margin-right: 15px;
   padding: 40px;
   border: 1px solid $color-dark;
   border-radius: 5px;
+  box-shadow: 7px 5px 5px $color-light;
 }
 
 /* Logo */
@@ -72,6 +83,8 @@ body {
   font-size: 104px;
   line-height: 1;
   text-align: center;
+  color: #fff;
+  padding: 150px 0px 100px 0px;
 }
 
 /* Lists */
@@ -102,9 +115,21 @@ body {
 /* Post */
 
 .post {
-  display: none;
+  //display: none;
+  position: absolute;
+  margin: 0 auto;
+  padding: 0px 40px 40px 0px;
+  //top: 55%;
+  //left: 55%;
+  //width: 500px;
+  // height: 500px;
+  // margin-top: -250px; /* Half the height */
+  // margin-left: -250px;
+  opacity: 0;
   &.active {
-    display: block;
+    //display: block;
+    opacity: 1;
+    transition: all 2s;
   }
 }
 

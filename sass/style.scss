@@ -69,7 +69,7 @@ body {
 
 .sidebar, .posts {
   background: $color-light;
-  margin-right: 15px;
+  margin: 15px;
   padding: 40px;
   border: 1px solid $color-dark;
   border-radius: 5px;
@@ -140,4 +140,17 @@ body {
   p {
     margin: 0 10px 0 0;
   }
+}
+
+@media (max-width: 1160px) {
+    .wrapper{
+        flex-direction: column;
+        .sidebar {
+            text-align: center;
+        }
+        .posts {
+            text-align: center;
+        }
+    }
+
 }

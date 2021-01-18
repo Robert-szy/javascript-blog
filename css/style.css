@@ -66,7 +66,7 @@ body {
 
 .sidebar, .posts {
   background: #fff;
-  margin-right: 15px;
+  margin: 15px;
   padding: 40px;
   border: 1px solid #444;
   border-radius: 5px;
@@ -132,5 +132,18 @@ body {
 
 .post-tags p {
   margin: 0 10px 0 0;
+}
+
+@media (max-width: 1160px) {
+  .wrapper {
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+  .wrapper .sidebar {
+    text-align: center;
+  }
+  .wrapper .posts {
+    text-align: center;
+  }
 }
 /*# sourceMappingURL=style.css.map */

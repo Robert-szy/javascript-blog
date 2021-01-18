@@ -66,7 +66,7 @@ if (childStartHeight>sidebarStartHeight) {
     document.querySelector('.posts').style.height = childHeight;
 }
 
-function generateTitleLinks(){
+const generateTitleLinks = function(){
     /* [DONE] remove links from left panel*/
     const titleList = document.querySelector(optTitleListSelector)
     titleList.innerHTML = '';

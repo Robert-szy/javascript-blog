@@ -136,14 +136,18 @@ body {
 
 @media (max-width: 1160px) {
   .wrapper {
-    -ms-flex-direction: column;
-        flex-direction: column;
+    display: -ms-grid;
+    display: grid;
   }
   .wrapper .sidebar {
     text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
   }
   .wrapper .posts {
     text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
   }
 }
 /*# sourceMappingURL=style.css.map */

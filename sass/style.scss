@@ -144,12 +144,16 @@ body {
 
 @media (max-width: 1160px) {
     .wrapper{
-        flex-direction: column;
+        display: grid;
         .sidebar {
             text-align: center;
+            margin-left: 50px;
+            margin-right: 50px;
         }
         .posts {
             text-align: center;
+            margin-left: 50px;
+            margin-right: 50px;
         }
     }
 

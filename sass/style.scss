@@ -25,9 +25,9 @@ body {
 }
 
 .blog {
-    background-image: url(/images/background.png);
-    background-position: center, center;
-    background-size: cover;
+  background-image: url(/images/background.png);
+  background-position: center, center;
+  background-size: cover;
 }
 
 .container {
@@ -40,6 +40,7 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
+
   span {
     text-transform: none;
     font-weight: 400;
@@ -95,6 +96,7 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
   .active {
     font-weight: bold;
   }
@@ -123,6 +125,7 @@ body {
   margin: 0 auto;
   padding: 0px 40px 40px 0px;
   opacity: 0;
+
   &.active {
     //display: block;
     opacity: 1;
@@ -137,24 +140,27 @@ body {
 
 .post-tags {
   display: flex;
+
   p {
     margin: 0 10px 0 0;
   }
 }
 
 @media (max-width: 1160px) {
-    .wrapper{
-        display: grid;
-        .sidebar {
-            text-align: center;
-            margin-left: 50px;
-            margin-right: 50px;
-        }
-        .posts {
-            text-align: center;
-            margin-left: 50px;
-            margin-right: 50px;
-        }
+  .wrapper {
+    display: grid;
+
+    .sidebar {
+      text-align: center;
+      margin-left: 50px;
+      margin-right: 50px;
     }
 
+    .posts {
+      text-align: center;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+  }
 }
+

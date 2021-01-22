@@ -169,7 +169,6 @@ const tagClickHandler = function(event){
   /* make new constant named "clickedElement" and give it the value of "this" */
   const clickedElement = this;
   console.log('clickedElement:', clickedElement);
-  console.log('clickedElement (with plus):' + clickedElement);
 
   /* make a new constant "href" and read the attribute "href" of the clicked element */
   const href = clickedElement.getAttribute('href')
@@ -181,12 +180,18 @@ const tagClickHandler = function(event){
 
 
   /* find all tag links with class active */
+  const activeTagLinks = document.querySelectorAll('href .active');
+  console.log('activeTagLinks:' + activeTagLinks);
 
   /* START LOOP: for each active tag link */
+  /*for(let activeTagLink of activeTagLinks){
 
-    /* remove class active */
+      /* remove class active */
+      /*activeTagLink.classList.remove('active');
+      console.log('activeTagLink:' + activeTagLink);*/
 
-  /* END LOOP: for each active tag link */
+    /* END LOOP: for each active tag link */
+    //}
 
   /* find all tag links with "href" attribute equal to the "href" constant */
 

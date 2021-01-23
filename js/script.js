@@ -33,8 +33,10 @@ const titleClickHandler = function(event){
     /* [DONE] add class 'active' to the correct article */
     targetArticle.classList.add('active');
 
+    setArticleHeight(targetArticle);
+
     /* [DONE] find article and sidebars height*/
-    let childHeight = targetArticle.offsetHeight + 40;
+    /*let childHeight = targetArticle.offsetHeight + 40;
     let sidebarHeight = sidebarStartHeight;
     console.log('targetArticle:', targetArticle);
     console.log('childHeight:', childHeight);
@@ -43,7 +45,7 @@ const titleClickHandler = function(event){
 
 
     /* [DONE] set wrapper height for selected article*/
-    const wrapperHeight = document.querySelector('.posts');
+    /*const wrapperHeight = document.querySelector('.posts');
     console.log('wrapperHeight:', wrapperHeight);
     if (childHeight>sidebarStartHeight) {
         childHeight = childHeight + 'px';
@@ -51,7 +53,7 @@ const titleClickHandler = function(event){
     } else {
         sidebarHeight = sidebarHeight +'px';
         wrapperHeight.style.height = sidebarHeight;
-    }
+    }*/
 }
 
 const optArticleSelector = '.post',
@@ -63,9 +65,37 @@ optArticleAuthorsSelector = '.post-author';
 /* [DONE] set initial .post height*/
 const sidebarStartHeight = document.querySelector('.sidebar').offsetHeight;
 const childStartHeight = document.querySelector('.post').offsetHeight;
-if (childStartHeight>sidebarStartHeight) {
-    let childHeight = childStartHeight + 40 + 'px';
-    document.querySelector('.posts').style.height = childHeight;
+
+const setInitialHeight = function() {
+  if (childStartHeight>=sidebarStartHeight) {
+      let childHeight = childStartHeight + 40 + 'px';
+      document.querySelector('.posts').style.height = childHeight;
+  }
+}
+
+setInitialHeight();
+
+const setArticleHeight = function(article){
+  const targetArticle = article;
+  /* [DONE] find article and sidebars height*/
+  let childHeight = targetArticle.offsetHeight + 40;
+  let sidebarHeight = sidebarStartHeight;
+  console.log('targetArticle:', targetArticle);
+  console.log('childHeight:', childHeight);
+  console.log('sidebarHeight:', sidebarHeight);
+  console.log('sidebarStartHeight:', sidebarStartHeight);
+
+
+  /* [DONE] set wrapper height for selected article*/
+  const wrapperHeight = document.querySelector('.posts');
+  console.log('wrapperHeight:', wrapperHeight);
+  if (childHeight>sidebarStartHeight) {
+      childHeight = childHeight + 'px';
+      wrapperHeight.style.height = childHeight;
+  } else {
+      sidebarHeight = sidebarHeight +'px';
+      wrapperHeight.style.height = sidebarHeight;
+  }
 }
 
 const generateTitleLinks = function(customSelector = ''){
@@ -97,9 +127,12 @@ const generateTitleLinks = function(customSelector = ''){
         console.log ('linkHTML: ', linkHTML);
 
         html = html + linkHTML;
-        console.log('html', html)
+        console.log('html', html);
+        setArticleHeight(article);
     }
     titleList.innerHTML = html
+
+
 
     const links = document.querySelectorAll('.titles a');
     console.log ('links', links);

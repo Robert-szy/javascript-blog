@@ -167,7 +167,7 @@ body {
   color: darkmagenta;
 }
 
-@media (max-width: 1160px) {
+@media (max-width: 850px) {
   .wrapper {
     display: -ms-grid;
     display: grid;

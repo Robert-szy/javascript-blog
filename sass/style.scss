@@ -146,6 +146,36 @@ body {
   }
 }
 
+/*Right sidebar*/
+.sidebar{
+  .tags li{
+    display: inline;
+    .tag-size-1{
+      font-size: smaller;
+      color: black;
+      font-weight: 900;
+    }
+    .tag-size-2{
+      font-size: small;
+      font-weight: 700;
+      color: rgb(29, 41, 202);
+    }
+    .tag-size-3{
+      font-size: medium;
+      color: rgb(214, 21, 37);
+    }
+    .tag-size-4{
+      font-size: large;
+      color: yellowgreen;
+    }
+    .tag-size-5{
+      font-size: larger;
+      font-weight: 900;
+      color: darkmagenta;
+    }
+  }
+}
+
 @media (max-width: 1160px) {
   .wrapper {
     display: grid;

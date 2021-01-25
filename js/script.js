@@ -1,4 +1,28 @@
 {
+
+const opt = {
+  ArticleSelector: '.post',
+  TitleSelector: '.post-title',
+  TitleListSelector: '.titles',
+  ArticleTagsSelector: '.post-tags .list',
+  ArticleAuthorsSelector: '.post-author',
+  AuthorListSelector: '.authors',
+  CloudClassCount: 5,
+  CloudClassPrefix: 'tag-size-',
+  TagListSelector: '.tags',
+}
+
+/* [DONE] set initial .post height*/
+const sidebarStartHeight = document.querySelector('.sidebar').offsetHeight;
+const childStartHeight = document.querySelector('.post.active').offsetHeight;
+
+const setInitialHeight = function() {
+  //if (childStartHeight>=sidebarStartHeight) {
+      let childHeight = childStartHeight + 85 + 'px';
+      document.querySelector('.posts').style.height = childHeight;
+  //}
+}
+
 const titleClickHandler = function(event){
     console.log('Link was clicked!');
     console.log('event:', event);
@@ -34,52 +58,11 @@ const titleClickHandler = function(event){
     targetArticle.classList.add('active');
 
     setArticleHeight(targetArticle);
-
-    /* [DONE] find article and sidebars height*/
-    /*let childHeight = targetArticle.offsetHeight + 40;
-    let sidebarHeight = sidebarStartHeight;
-    console.log('targetArticle:', targetArticle);
-    console.log('childHeight:', childHeight);
-    console.log('sidebarHeight:', sidebarHeight);
-    console.log('sidebarStartHeight:', sidebarStartHeight);
-
-
-    /* [DONE] set wrapper height for selected article*/
-    /*const wrapperHeight = document.querySelector('.posts');
-    console.log('wrapperHeight:', wrapperHeight);
-    if (childHeight>sidebarStartHeight) {
-        childHeight = childHeight + 'px';
-        wrapperHeight.style.height = childHeight;
-    } else {
-        sidebarHeight = sidebarHeight +'px';
-        wrapperHeight.style.height = sidebarHeight;
-    }*/
 }
 
-const optArticleSelector = '.post',
-optTitleSelector = '.post-title',
-optTitleListSelector = '.titles',
-optArticleTagsSelector = '.post-tags .list',
-optArticleAuthorsSelector = '.post-author',
-optCloudClassCount = 5,
-optCloudClassPrefix = 'tag-size-';
-//optTagListSelector = '.tags .list';
-
-/* [DONE] set initial .post height*/
-const sidebarStartHeight = document.querySelector('.sidebar').offsetHeight;
-const childStartHeight = document.querySelector('.post').offsetHeight;
-
-const setInitialHeight = function() {
-  if (childStartHeight>=sidebarStartHeight) {
-      let childHeight = childStartHeight + 40 + 'px';
-      document.querySelector('.posts').style.height = childHeight;
-  }
-}
-
-setInitialHeight();
-
-const setArticleHeight = function(article){
-  const targetArticle = article;
+const setArticleHeight = function(){
+  //const targetArticle = article;
+  const targetArticle = document.querySelector('.post.active');
   /* [DONE] find article and sidebars height*/
   let childHeight = targetArticle.offsetHeight + 40;
   let sidebarHeight = sidebarStartHeight;
@@ -87,7 +70,6 @@ const setArticleHeight = function(article){
   console.log('childHeight:', childHeight);
   console.log('sidebarHeight:', sidebarHeight);
   console.log('sidebarStartHeight:', sidebarStartHeight);
-
 
   /* [DONE] set wrapper height for selected article*/
   const wrapperHeight = document.querySelector('.posts');
@@ -103,11 +85,11 @@ const setArticleHeight = function(article){
 
 const generateTitleLinks = function(customSelector = ''){
     /* [DONE] remove links from left panel*/
-    const titleList = document.querySelector(optTitleListSelector)
+    const titleList = document.querySelector(opt.TitleListSelector)
     titleList.innerHTML = '';
 
     /* [DONE] for each article: */
-    const articles = document.querySelectorAll(optArticleSelector + customSelector);
+    const articles = document.querySelectorAll(opt.ArticleSelector + customSelector);
     console.log ('articles: ', articles);
     console.log ('customSelector: ', customSelector);
     let html = '';
@@ -119,10 +101,10 @@ const generateTitleLinks = function(customSelector = ''){
         console.log ('id: ', articleId);
 
         /* [DONE] find article title */
-        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+        const articleTitle = article.querySelector(opt.TitleSelector).innerHTML;
         console.log ('articleTitle: ', articleTitle);
 
-        const articleTitle1 = document.querySelector(optTitleSelector).innerHTML;
+        const articleTitle1 = document.querySelector(opt.TitleSelector).innerHTML;
         console.log ('articleTitle1: ', articleTitle1);
 
         /* [DONE] generate HTML with title and id */
@@ -131,11 +113,9 @@ const generateTitleLinks = function(customSelector = ''){
 
         html = html + linkHTML;
         console.log('html', html);
-        setArticleHeight(article);
+        setArticleHeight();
     }
     titleList.innerHTML = html
-
-
 
     const links = document.querySelectorAll('.titles a');
     console.log ('links', links);
@@ -172,8 +152,8 @@ const calculateTagClass = function(count, params){
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
-  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
-  const classname = optCloudClassPrefix + classNumber;
+  const classNumber = Math.floor( percentage * (opt.CloudClassCount - 1) + 1 );
+  const classname = opt.CloudClassPrefix + classNumber;
   console.log('class: ', classname);
 
   return classname;
@@ -185,14 +165,14 @@ const generateTags = function(){
   let allTags = {};
 
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opt.ArticleSelector);
   console.log ('articles: ', articles);
 
   /* START LOOP: for every article: */
   for(let article of articles){
 
     /* find tags wrapper */
-    const tags = article.querySelector(optArticleTagsSelector);
+    const tags = article.querySelector(opt.ArticleTagsSelector);
     console.log ('article: ', article);
     console.log ('tags: ', tags);
 
@@ -227,23 +207,20 @@ const generateTags = function(){
         } else {
         allTags[tag]++;
       }
-
     /* END LOOP: for each tag */
     }
 
     /* insert HTML of all the links into the tags wrapper */
     tags.innerHTML = html;
 
-
   /* END LOOP: for every article: */
   }
 
   /* [NEW] find list of tags in right column */
-  const tagList = document.querySelector('.tags');
+  const tagList = document.querySelector(opt.TagListSelector);
   console.log('tagList', tagList);
 
   /* [NEW] add html from allTags to tagList */
-  //tagList.innerHTML = allTags.join(' ');
   console.log('allTags: ', allTags);
 
   /*[NEW] */
@@ -304,21 +281,19 @@ const addClickListenersToTags = function(){
 
 addClickListenersToTags();
 
-//
-
 const generateAuthors = function(){
   /* [NEW] create a new variable allAuthors with an empty object */
   let allAuthors = {};
 
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opt.ArticleSelector);
   console.log ('articles: ', articles);
 
   /* START LOOP: for every article: */
   for(let article of articles){
 
     /* find authors wrapper */
-    const authors = article.querySelector(optArticleAuthorsSelector);
+    const authors = article.querySelector(opt.ArticleAuthorsSelector);
     console.log ('article: ', article);
     console.log ('authors: ', authors);
 
@@ -345,10 +320,9 @@ const generateAuthors = function(){
   }
 
   /* [NEW] find list of authors in right column */
-  const authorList = document.querySelector('.authors');
+  const authorList = document.querySelector(opt.AuthorListSelector);
 
   /* [NEW] add html from allAuthors to authorList */
-  //authorList.innerHTML = allAuthors.join(' ');
   console.log(allAuthors);
 
   /* [NEW] create variable for all links HTML code */
@@ -402,8 +376,10 @@ const addClickListenersToAuthors = function(){
 
 addClickListenersToAuthors();
 
+setInitialHeight();
+
 window.addEventListener('resize', function(event){
-  const targetArticle = document.querySelector('.post');
+  const targetArticle = document.querySelector('.post.active');
   setArticleHeight(targetArticle);
 });
 

@@ -354,14 +354,14 @@ const generateAuthors = function(){
   /* [NEW] create variable for all links HTML code */
   let allAuthorsHTML = '';
 
-  /* [NEW] START LOOP: for each tag in allTags: */
+  /* [NEW] START LOOP: for each author in allAuthors: */
   for(let author in allAuthors){
-    /* [NEW] generate code of a link and add it to allTagsHTML */
+    /* [NEW] generate code of a link and add it to allAuthorsHTML */
     allAuthorsHTML += '<li><a href="' + author + '"><span class="author-name">' + author + ' </span></a></li>' ;
   }
-  /* [NEW] END LOOP: for each tag in allTags: */
+  /* [NEW] END LOOP: for each author in allAuthors: */
 
-  /*[NEW] add HTML from allTagsHTML to tagList */
+  /*[NEW] add HTML from allAuthorsHTML to authorList */
   console.log('allAuthorsHtML', allAuthorsHTML);
   authorList.innerHTML = allAuthorsHTML;
 }
@@ -386,7 +386,7 @@ const authorClickHandler = function(event){
 
 const addClickListenersToAuthors = function(){
   /* find all links to authors */
-  const links = document.querySelectorAll('.post-author a');
+  const links = document.querySelectorAll('.authors a, .post-author a');
     console.log ('links: ', links);
 
     /* START LOOP: for each link */

@@ -357,7 +357,7 @@ const generateAuthors = function(){
   /* [NEW] START LOOP: for each author in allAuthors: */
   for(let author in allAuthors){
     /* [NEW] generate code of a link and add it to allAuthorsHTML */
-    allAuthorsHTML += '<li><a href="' + author + '"><span class="author-name">' + author + ' </span></a></li>' ;
+    allAuthorsHTML += '<li><a href="' + author + '"><span class="author-name">' + author + ' (' + allAuthors[author] +') </span></a></li>' ;
   }
   /* [NEW] END LOOP: for each author in allAuthors: */
 
@@ -402,6 +402,9 @@ const addClickListenersToAuthors = function(){
 
 addClickListenersToAuthors();
 
-
+window.addEventListener('resize', function(event){
+  const targetArticle = document.querySelector('.post');
+  setArticleHeight(targetArticle);
+});
 
 }

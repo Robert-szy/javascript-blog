@@ -1,4 +1,7 @@
 {
+  const templates = {
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+  }
 
   //opt NIE opts -> opt.nazwa nie opts.nazwa
   const opt = {

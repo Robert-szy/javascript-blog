@@ -110,7 +110,9 @@
         console.log ('articleTitle1: ', articleTitle1);
 
         /* [DONE] generate HTML with title and id */
-        const linkHTML = '<li><a href="#'+ articleId +'"><span>'+ articleTitle +'</span></a></li>';
+        //const linkHTML = '<li><a href="#'+ articleId +'"><span>'+ articleTitle +'</span></a></li>';
+        const linkHTMLData = {id: articleId, title: articleTitle};
+        const linkHTML = templates.articleLink(linkHTMLData);
         console.log ('linkHTML: ', linkHTML);
 
         html = html + linkHTML;
@@ -194,7 +196,9 @@
         console.log ('tag: ', tag);
 
         /* generate HTML of the link */
-        const linkHTML = '<li><a href="#tag-'+ tag +'"><span>'+ tag +'</span></a></li>'+ " ";
+        //const linkHTML = '<li><a href="#tag-'+ tag +'"><span>'+ tag +'</span></a></li>'+ " ";
+        const linkHTMLData = {id: 'tag-'+ tag, title: tag};
+        const linkHTML = templates.articleLink(linkHTMLData);
         console.log ('linkHTML: ', linkHTML);
 
         /* add generated code to html variable */
@@ -304,7 +308,9 @@
       console.log ('articleTAuthor: ', articleAuthor);
 
       /* generate HTML of the link */
-      const linkHTML = '<a href="'+ articleAuthor +'"><span>'+ 'by ' + articleAuthor +'</span></a>';
+      //const linkHTML = '<a href="'+ articleAuthor +'"><span>'+ 'by ' + articleAuthor +'</span></a>';
+      const linkHTMLData = {id: articleAuthor, title: 'by '+ articleAuthor};
+      const linkHTML = templates.articleLink(linkHTMLData);
       console.log ('linkHTML: ', linkHTML);
 
       /* [NEW] check if this link is NOT already in allAuthors */
@@ -316,7 +322,8 @@
       }
 
       /* insert HTML of all the links into the authors wrapper */
-      authors.innerHTML = linkHTML;
+      //linkHTML = linkHTML.replace('"#', '"');
+      authors.innerHTML = linkHTML.replace('"#', '"');
 
     /* END LOOP: for every article: */
     }

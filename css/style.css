@@ -126,6 +126,10 @@ body {
   font-style: italic;
 }
 
+.post-author li {
+  list-style: none;
+}
+
 .post-tags {
   display: -ms-flexbox;
   display: flex;
